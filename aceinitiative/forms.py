@@ -11,4 +11,12 @@ class RegistrationForm(UserCreationForm):
     class Meta:
         model = User
         fields = ['username', 'email', 'password1', 'password2']
-        
+
+class ProfileUpdateForm(forms.ModelForm):
+    """Form for updating user profile"""
+    class Meta:
+        model = Profile
+        exclude = ['user','email']
+
+
+
