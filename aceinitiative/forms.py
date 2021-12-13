@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 
 # Define your forms here
 class RegistrationForm(UserCreationForm):
+    """Form for registering a new user"""
     email = forms.EmailField()
 
     class Meta:
@@ -19,7 +20,7 @@ class ProfileUpdateForm(forms.ModelForm):
         exclude = ['user','email']
 
 class NewProjectForm(forms.ModelForm):
-    """For for uploading a new project"""
+    """Form for uploading a new project"""
     model = Project
     exclude = ['user']
 
