@@ -17,7 +17,7 @@ class Profile(models.Model):
     def save_profile(self):
         self.save()
 
-class Projects(models.Model):
+class Project(models.Model):
     """Class model for the project fields"""
     projectimage = models.ImageField(upload_to='projectimage', null=True)
     profile = models.ForeignKey(Profile,on_delete=models.CASCADE, null=True)
@@ -36,4 +36,4 @@ class Projects(models.Model):
         """Class method to source a project"""
         projects = cls.objects.filter(name_icontains = search_term)
         return projects
-        
+
