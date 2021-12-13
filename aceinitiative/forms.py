@@ -18,5 +18,11 @@ class ProfileUpdateForm(forms.ModelForm):
         model = Profile
         exclude = ['user','email']
 
+class NewProjectForm(forms.ModelForm):
+    """For for uploading a new project"""
+    model = Project
+    exclude = ['user']
+
+
 
 
