@@ -1,11 +1,15 @@
+from django.http import response
 from django.shortcuts import redirect, render,edirect
+from rest_framework import serializers
 from .models import Profile,Project
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate
 from .forms import NewProjectForm,RegistrationForm,ProfileUpdateForm
 from django.contrib.auth.models import User
 
-
+from rest_framework.response import Response
+from .serializer import ProfileSerializer,ProjectSerializer
+from rest_framework.views import APIView
 
 
 # Create your views here.
@@ -67,4 +71,21 @@ def new_project(request):
     else:
         form = NewProjectForm()
     return render(request,'project.html',{"form":form,"current_user":current_user})
-    
+
+@login_required(login_url='/accounts/login/')
+def api_page(request):
+    return render(request,'apiends.html')
+
+class ProfileList(APIView):
+    """API class for returning Profile fields in API view"""
+    def get(self,request,fromat=None):
+        all_profiles= Profile.objects.all()
+        serializers = ProfileSerializer(all_profiles,many=True)
+        return Response(serializers.data)
+
+class ProjectList(APIView):
+    """API class for returning Project fields in API view"""
+    def get(self, request, fromat=None):
+        all_projects = Project.objects.all()
+        serializers = ProjectSerializer(all_projects, many=True)
+        return Response(serializers.data)

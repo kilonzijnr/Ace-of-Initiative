@@ -11,6 +11,7 @@ cloudinary = "*"
 django-heroku = "*"
 psycopg2 = "*"
 pillow = "*"
+djangorestframework = "*"
 
 [dev-packages]
 
