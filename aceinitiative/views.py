@@ -1,5 +1,5 @@
 from django.http import response
-from django.shortcuts import redirect, render,edirect
+from django.shortcuts import redirect, render
 from rest_framework import serializers
 from .models import Profile,Project
 from django.contrib.auth.decorators import login_required
