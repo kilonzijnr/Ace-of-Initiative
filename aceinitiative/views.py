@@ -53,4 +53,18 @@ def search_project(request):
         message = "Enter a valid project name"
         return render(request,'search.html',{"message":message})
 
-
+@login_required(login_url='/accounts/login/')
+def new_project(request):
+    """Functionality for uploading a new project"""
+    current_user = request.user
+    if request.method == 'POST':
+        form = NewProjectForm(request.POST, request.FILES)
+        if form.is_valid():
+            project = form.save(commit=False)
+            project.user = current_user
+            project.save()
+        return redirect('homepage')
+    else:
+        form = NewProjectForm()
+    return render(request,'project.html',{"form":form,"current_user":current_user})
+    
