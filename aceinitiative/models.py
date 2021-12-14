@@ -37,3 +37,6 @@ class Project(models.Model):
         projects = cls.objects.filter(name_icontains = search_term)
         return projects
 
+# class Rating(models.Model):
+    """Class model for Project Ratings"""
+
