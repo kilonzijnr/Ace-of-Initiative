@@ -40,6 +40,17 @@ def userregistration(request):
     else:
         return render(request,'registration/signup.html')
 
+@login_required(login_url='/accounts/login/')
+def search_project(request):
+    """Functionality for searching for a specific project"""
+    if "project" in request.GET and request.GET["project"]:
+        search_term = request.GET("project")
+        searched_projects = Project.search_by_name(search_term)
+        message = f"{search_term}"
 
+        return render(request,'search.html',{"message":message,"projects":searched_projects,"project":search_term})
+    else:
+        message = "Enter a valid project name"
+        return render(request,'search.html',{"message":message})
 
 
