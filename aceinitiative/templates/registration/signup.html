@@ -1,0 +1,49 @@
+{%extends "registration/base.html"%} 
+{% block content %}
+
+<div class="hero-image" style="margin-bottom:40px;">
+  <div class="hero-text" style="padding: 100px;">
+   
+    <h3 class="text-center" style="color:white;font-weight:bold;padding-top:20px"><u>Sign Up</u></h3>
+    {% if form.errors %}
+      <p>Incorrect Details</p>
+    {% endif %} 
+    <form  action="register/" method="post" style="padding: 40px;">
+      {% csrf_token %}
+
+      <div class="form-group">
+        
+        <div class="input-group">
+          <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+          <input  name="username" placeholder="username" class="form-control"  type="text">
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="input-group">
+          <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+          <input name="email" placeholder="E-Mail Address" class="form-control"  type="email">
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="input-group">
+          <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+          <input name="password1" placeholder="Password" class="form-control"  type="password">
+        </div>
+      </div>
+      <div class="form-group">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+            <input name="password2" placeholder="Confirm Password" class="form-control"  type="password">
+          </div>
+      </div>
+      <div class="form-group" >
+        <button type="submit" class="btn btn-primary ">Sign Up</button><br>
+        <span style="color: white;">Already have an account?</span> <a href="{% url 'register' %}"><span style="font-weight:bold"> Sign In</span></a>
+      </div>
+    </form>
+  
+  </div>
+</div>
+
+
+{% endblock %}
