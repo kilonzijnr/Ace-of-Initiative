@@ -2,7 +2,7 @@
 {% block content %}
 {% load static %}
 {{block.super}}
-    <div style="padding:30px">
+    <div>
         <p class=" text-center" style="font-weight: bold; font-size: x-large; color: #ffffff;">SUBMIT YOUR PROJECT HERE FOR YOUR PEERS TO RATE!</p> 
     </div>
     <div class="hero-image" >
@@ -24,26 +24,24 @@
         <div class="text-center container" style="padding:100px; background-color: rgb(255, 255, 255);  max-width: 2000px;">
             <a class="btn btn-lg btn-primary" style="border-radius: 50px;" href="{% url 'new_project' %}">SUBMIT SITE</a><br> 
         </div>
-        <div class="container">
-            <h3 style="color:#ffffff;text-align:center;"><strong>POSTED PROJECTS</strong> </h3><br><br>
+        <br><br>
+        <h3 style="color:#ffffff;text-align:center;"><strong>POSTED PROJECTS</strong> </h3><br><br>
+        <div class="row row-cols-3 row-cols-md-3 g-4" >
             {% for project in projects %}
-            <div class="col-lg-4 col-lg-4 col-lg-4">
-                <div class="card ">
-                    <img src="{{project.webimage.url}}"  class="card-img-top img-fluid" alt="{{project.name}}" >
-                    <div class="card-text text-center" style="padding: 20px;">
-                        <h4 style="font-weight: bold;">{{project.name}}</h4>
-                        <small class="text-muted" style="font-family: Arial, Helvetica, sans-serif;">{{project.description | slice:":100" }}...</small><br><br>
-                        <a class="btn btn-primary" style="border-radius: 20px;" href="/awwards/project/{{project.id}}" >Project details & Rating</a><br><br>
-                       
+                <div class="col">
+                    <div class="card">
+                        <img src="{{project.projectimage.url}}" style="max-height: 400px;" class="card-img-top img-fluid" alt="{{project.name}}" >
+                        <div class="card-text text-center" style="padding: 20px;">
+                            <h4 style="font-weight: bold;">{{project.name}}</h4>
+                            <small class="text-muted" style="font-family: Arial, Helvetica, sans-serif;">{{project.description | slice:":100" }}...</small><br><br>
+                            <a class="btn btn-primary" style="border-radius: 20px;" href="{% url 'rate_project' project.id %}"" >RATE PROJECT</a><br><br>
                     </div>
                 </div>
+               
             </div>
             {% endfor %}
         </div><br><br>
         
     </div>
-    <link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
-<script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.min.js' %}"></script>
-
 
 {%endblock%}
