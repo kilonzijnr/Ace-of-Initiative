@@ -1,0 +1,33 @@
+{%extends "registration/base.html"%}
+{% load django_bootstrap5 %}
+{% load static %}
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+      {% if form.errors %}
+        <p> Password or Username is incorrect </p>
+      {% endif %}
+      <div class="panel panel-default">
+
+        <div class="panel-heading" style="background-color: #a5a39f;">
+          <h3 class="text-center" style="color:white;">New Project</h3>
+        </div>
+        <div class="panel-body" style="padding: 40px;">
+            <form  action="" method="post" enctype="multipart/form-data" >
+                {%csrf_token%}
+                {% bootstrap_form form%}
+                <input type="submit" class="btn btn-primary" value="Submit">
+            </form>
+        </div>
+
+      </div>
+
+    </div>
+    <div class="col-md-2"></div>
+  </div>
+</div>
+
+{% endblock %}
+

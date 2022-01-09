@@ -1,0 +1,49 @@
+{%extends 'base.html'%}
+{% block content %}
+{% load static %}
+{{block.super}}
+    <div style="padding:30px">
+        <p class=" text-center" style="font-weight: bold; font-size: x-large; color: #ffffff;">SUBMIT YOUR PROJECT HERE FOR YOUR PEERS TO RATE!</p> 
+    </div>
+    <div class="hero-image" >
+        <div class="hero-text">
+            <h1 style="font-family: 'Calistoga', cursive;color:white; text-align: center;">ACE OF INITIATIVE</h1><br>
+            <form class="navbar-form" role="search" action="{% url 'search_project' %}">
+                <div class="input-group" style="justify-content: center;">
+                    <input input type="text" style="max-width: 1000px;" class="form-control" placeholder="Search Project" name="project" >
+                    <div class="input-group-btn">
+                        <button class="btn btn-primary"  type="submit">SEARCH<i class="glyphicon glyphicon-search"></i></button>
+                    </div>
+                </div>
+            </form>
+ <br><br>
+            
+        </div>
+    </div>
+    </div class="container" >
+        <div class="text-center container" style="padding:100px; background-color: rgb(255, 255, 255);  max-width: 2000px;">
+            <a class="btn btn-lg btn-primary" style="border-radius: 50px;" href="{% url 'new_project' %}">SUBMIT SITE</a><br> 
+        </div>
+        <div class="container">
+            <h3 style="color:#ffffff;text-align:center;"><strong>POSTED PROJECTS</strong> </h3><br><br>
+            {% for project in projects %}
+            <div class="col-lg-4 col-lg-4 col-lg-4">
+                <div class="card ">
+                    <img src="{{project.webimage.url}}"  class="card-img-top img-fluid" alt="{{project.name}}" >
+                    <div class="card-text text-center" style="padding: 20px;">
+                        <h4 style="font-weight: bold;">{{project.name}}</h4>
+                        <small class="text-muted" style="font-family: Arial, Helvetica, sans-serif;">{{project.description | slice:":100" }}...</small><br><br>
+                        <a class="btn btn-primary" style="border-radius: 20px;" href="/awwards/project/{{project.id}}" >Project details & Rating</a><br><br>
+                       
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div><br><br>
+        
+    </div>
+    <link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
+<script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.min.js' %}"></script>
+
+
+{%endblock%}

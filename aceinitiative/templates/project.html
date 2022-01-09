@@ -1,0 +1,43 @@
+{% extends 'base.html' %} {% load crispy_forms_tags %} {% block content %}
+{{block.super}}
+<div class="container" style="padding: 50px">
+  <div class="row">
+    <div class="col-lg-4">
+      <div class="card">
+        <img
+          src="{{project.projectimage.url}}"
+          class="card-img-top img-fluid"
+          alt="{{project.name}}"
+        />
+        <div class="card text-center">
+          <div>
+            <!-- <h4>Star Rating</h4> -->
+            <div class="mask rgba-black-slight">
+              <div class="container-fluid">
+              </div>
+              <div class="col-lg-8" style="padding: 40px">
+                <div>
+                  <h2 style="font-weight: bold">Project Name</h2>
+                  <p style="font-weight: bold">{{project.name}}</p>
+                  <h2 style="font-weight: bold">Project Description</h2>
+                  <p>{{project.description}}</p>
+                  <h5><strong> Developer: {{project.profile}}</strong></h5>
+                  <br /><br />
+                  <a
+                    class="btn btn-info text-center"
+                    style="border-radius: 25px"
+                    href="http://{{project.link}}"
+                    target="_blank"
+                    >Visit Website</a
+                  ><br /><br />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {%endblock%}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

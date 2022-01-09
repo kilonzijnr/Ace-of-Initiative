@@ -4,7 +4,7 @@ from rest_framework import serializers
 from .models import Profile,Project
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate
-from .forms import NewProjectForm,RegistrationForm,ProfileUpdateForm
+from .forms import NewProjectForm,RegisterForm,ProfileUpdateForm
 from django.contrib.auth.models import User
 
 from rest_framework.response import Response
@@ -29,7 +29,7 @@ def view_profile(request):
         context={'form':form,'projects':projects}
     return render(request,"profile.html",context=context)
 
-def userregistration(request):
+def register(request):
     """Functionality for registering a new user"""
     if request.method == 'POST':
         username=request.POST['username']

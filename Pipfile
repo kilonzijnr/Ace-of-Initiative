@@ -12,6 +12,8 @@ django-heroku = "*"
 psycopg2 = "*"
 pillow = "*"
 djangorestframework = "*"
+django-registration = "*"
+django-crispy-forms = "*"
 
 [dev-packages]
 

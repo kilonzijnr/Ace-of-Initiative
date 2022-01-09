@@ -15,7 +15,7 @@ urlpatterns=[
     # path('^awwardsapi/api/profile/$', views.ProfileList.as_view(),name='api-profile'),
     # path('^awwardsapi/api/project/$', views.ProjectList.as_view(),name='api-project'),
     # path('^awwardsapi/$',views.api_page,name='api-page'),
-    path('register/',views.userregistration, name='register'),
+    path('register/',views.register, name='register'),
 ]
 if settings.DEBUG:
     urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
