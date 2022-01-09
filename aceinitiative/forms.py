@@ -16,7 +16,7 @@ class ProfileUpdateForm(forms.ModelForm):
     """Form for updating user profile"""
     class Meta:
         model = Profile
-        exclude = ['user','email']
+        fields = ['name', 'email', 'profile_pic']
 
 class NewProjectForm(forms.ModelForm):
     """Form for uploading a new project"""

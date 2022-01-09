@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+    {{block.super}} 
+<div class="container">
+    <div class="row" style="font-family: Arial, Helvetica, sans-serif;color:#ffffff">
+        {% if success%}
+            <h3>Found {{ success|length }} projects: {{message}}</h3>
+        {% else %}
+            <h3> Found 0 projects by the title: {{danger}}</h3>
+        {% endif %}
+
+    </div><br>
+    <div class="row">
+        {% for project in projects %}
+        <div class="col-lg-4 col-lg-4 col-lg-4">
+            <div class="card ">
+                <img src="{{project.projectimage.url}}"  class="card-img-top img-fluid" alt="{{project.name}}" >
+                <div class="card-text text-center" style="padding: 20px;">
+                    <h4 style="font-weight: bold;">{{project.name}}</h4>
+                    <small class="text-muted" style="font-family: Arial, Helvetica, sans-serif;">{{project.description | slice:":100" }}...</small><br><br>
+                    <a class="btn btn-primary" style="border-radius: 25px;" href="project/{{project.id}}" >Project details & Rating</a><br><br>
+                </div>
+            </div>
+  
+        </div>
+        {% endfor %} 
+    </div>  
+</div>
+{%endblock%}

@@ -22,10 +22,10 @@
             <div style="color: white;">
                 <h3><b>Username: </b>{{user}}</h3>
                 <h3><b>Email: </b>{{user.email}}</h3>
-                <h3><b>Bio:</b>{{user.bio}}</h3>
+                <h3><b>Name:</b>{{user.name}}</h3>
             </div>
             <br> <br>
-            <a href=""><b><i>Update Profile</i></b></a>
+            <a href="{% url 'update_profile' %}"><b><i>Update Profile</i></b></a>
         </div>
         <div class="col-md-7 row-3">
             <h1>PROJECT POSTS FOR  {{user}}</h1>

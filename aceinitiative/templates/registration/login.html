@@ -7,8 +7,20 @@
 
 {% block content %}
 {% if page == 'login' %}
-    <div class="login-page">
-        <h3>login</h3>
+
+<style>
+  .login{
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+    position: relative;
+    
+  }
+</style>
+
+    <div class="login">
+        <h3>Sign In</h3>
         <form action="" method='post'>
             {% csrf_token %} 
             <div class="form-group">
@@ -29,7 +41,7 @@
 {% else %}
     
     <div class="form-wrapper my-3">
-        <h3>register</h3>
+        <h3>Sign-UP</h3>
         <form action="" method='post'>
             {% csrf_token %}  
             {% bootstrap_form form %}        

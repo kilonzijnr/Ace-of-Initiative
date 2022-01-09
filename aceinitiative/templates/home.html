@@ -10,7 +10,7 @@
             <h1 style="font-family: 'Calistoga', cursive;color:white; text-align: center;">ACE OF INITIATIVE</h1><br>
             <form class="navbar-form" role="search" action="{% url 'search_project' %}">
                 <div class="input-group" style="justify-content: center;">
-                    <input input type="text" style="max-width: 1000px;" class="form-control" placeholder="Search Project" name="project" >
+                    <input input type="search" style="max-width: 1000px;" class="form-control" placeholder="Search Project" name="project">
                     <div class="input-group-btn">
                         <button class="btn btn-primary"  type="submit">SEARCH<i class="glyphicon glyphicon-search"></i></button>
                     </div>
@@ -32,7 +32,7 @@
                     <div class="card">
                         <img src="{{project.projectimage.url}}" style="max-height: 400px;" class="card-img-top img-fluid" alt="{{project.name}}" >
                         <div class="card-text text-center" style="padding: 20px;">
-                            <h4 style="font-weight: bold;">{{project.name}}</h4>
+                            <h4 style="font-weight: bold; color: black;"><b>{{project.name}}</b></h4>
                             <small class="text-muted" style="font-family: Arial, Helvetica, sans-serif;">{{project.description | slice:":100" }}...</small><br><br>
                             <a class="btn btn-primary" style="border-radius: 20px;" href="{% url 'rate_project' project.id %}"" >RATE PROJECT</a><br><br>
                     </div>

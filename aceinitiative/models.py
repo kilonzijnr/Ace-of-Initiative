@@ -56,7 +56,7 @@ class Ratings(models.Model):
         self.delete()
         
     def __str__(self):
-        return self.owner.username
+        return self.rater.username
 
     @property
     def average_score(self):

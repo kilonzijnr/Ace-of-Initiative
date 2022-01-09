@@ -112,15 +112,16 @@ def view_profile(request,pk):
 @login_required(login_url='login')
 def search_project(request):
     """Functionality for searching for a specific project"""
-    if "project" in request.GET and request.GET["project"]:
-        search_term = request.GET("project")
-        searched_projects = Project.search_by_name(search_term)
+    if "search" in request.GET and request.GET["search"]:
+        search_term = request.GET.get("search").lower
+        projects = Project.search_by_name(search_term)
         message = f"{search_term}"
+        title = message
 
-        return render(request,'search.html',{"message":message,"projects":searched_projects,"project":search_term})
+        return render(request,'search.html',{"success":message,"projects":projects,"title":title})
     else:
         message = "Enter a valid project name"
-        return render(request,'search.html',{"message":message})
+        return render(request,'search.html',{'danger':message})
 
 @login_required(login_url='login')
 def new_project(request):
@@ -129,12 +130,25 @@ def new_project(request):
         form = NewProjectForm(request.POST, request.FILES)
         if form.is_valid():
             project = form.save(commit=False)
-            project.owner = current_user
+            project.rater = current_user
             project.save()
         return redirect('homepage')
     else:
         form = NewProjectForm()
     return render(request, 'new_project.html', {'form':form})
+
+def update_profile(request):
+    user = request.user
+    form = ProfileUpdateForm(instance=user)
+    if request.method == 'POST':
+        form = ProfileUpdateForm(request.POST, request.FILES, instance=user)
+        if form.is_valid():
+            form.save()
+            return redirect('view_profile', pk=user.id)
+    context = {
+        'form':form
+    }
+    return render(request, 'update_profile.html', context)
 
 @login_required(login_url='login')
 def projects(request):
